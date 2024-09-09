@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8"> <!-- define el tipo de codificacion -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- configura la vista para dispositivos moviles -->
+    <link rel="stylesheet" href="/styles/slider.css"> <!-- enlaza el archivo de estilos -->
+    <title>Document</title> <!-- titulo de la pagina -->
+</head>
+<body onload="iniciar();"> <!-- llama a la funcion iniciar al cargar la pagina -->
+    <h1 id="titulo1">Pase de imágenes automático</h1> <!-- titulo principal de la pagina -->
+
+    <div id="cajaSlide"> <!-- contenedor para las imagenes -->
+        <img id="imgSlide" src="./images/img1.jpg" alt="Imagen" title="Imagen" onclick="rotarImagenes();"> <!-- imagen que se va a rotar -->
+        <br>
+
+        <form> <!-- formulario para los botones de control -->
+            <input type="button" value="Parar" onclick="clearInterval(temporizador);"> <!-- boton para detener el rotado -->
+            
+            <input type="button" value="Continuar" onclick="reiniciarTemporizador();"> <!-- boton para continuar el rotado -->
+        </form>
+    </div>
+
+    <script>
+        var contador = 1; // contador para las imagenes
+        var temporizador; // variable para el temporizador
+
+        function iniciar() { // funcion para iniciar el temporizador
+            temporizador = setInterval(rotarImagenes, 3000); // llama a rotarImagenes cada 3 segundos
+        }
+        
+        function rotarImagenes() { // funcion para rotar las imagenes
+            contador++; // incrementa el contador
+            if (contador > 10) { // si el contador es mayor a 10
+                contador = 1; // reinicia el contador
+            }
+            var img = document.getElementById('imgSlide'); // obtiene la imagen
+            img.src = './images/img' + contador + '.jpg'; // cambia la fuente de la imagen
+        }
+    
+        function reiniciarTemporizador() { // funcion para reiniciar el temporizador
+            clearInterval(temporizador); // detiene cualquier temporizador previo
+            iniciar(); // inicia de nuevo
+        }
+
+    </script>
+</body>
+</html>

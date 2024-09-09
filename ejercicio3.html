@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8"> <!-- establece el tipo de codificacion -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ajusta la vista para dispositivos moviles -->
+    <title>Document</title> <!-- titulo de la pagina -->
+</head>
+<body>
+    <h1>Adivina el numero</h1> <!-- titulo principal del juego -->
+    <p>intenta adivinar un numero entre el 1 y 100</p> <!-- instruccion para el usuario -->
+    <input type="number" id="numero" placeholder="Escribe tu numero"> <!-- campo para que el usuario escriba su numero -->
+    <button onclick="adivinar()">Adivinar</button> <!-- boton para enviar el intento -->
+    <p id="resultado"></p> <!-- espacio para mostrar el resultado -->
+
+    <script>
+        let numeroSecreto = Math.floor(Math.random() * 100) + 1; // genera un numero secreto entre 1 y 100
+        let intentos = 0; // contador de intentos
+
+        function adivinar() { // funcion para verificar el intento
+            let intento = document.getElementById("numero").value; // obtiene el valor del input
+            intentos++ // incrementa el contador de intentos
+            if(intento == numeroSecreto){ // si el intento es correcto
+                document.getElementById("resultado").innerText = "¡Correcto! Adivinaste en " + intentos + " intentos"; // muestra mensaje de acierto
+            }
+            else if(intento < numeroSecreto){ // si el intento es menor que el numero secreto
+                document.getElementById("resultado").innerText = "El numero es mayor intentalo de nuevo"; // indica que el numero es mayor
+            }
+            else{ // si el intento es mayor que el numero secreto
+                document.getElementById("resultado").innerText = "El numero es menor intentalo de nuevo"; // indica que el numero es menor
+            }
+        }
+    </script>
+
+</body>
+</html>

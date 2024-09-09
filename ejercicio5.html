@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8"> <!-- establece el tipo de codificacion -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ajusta la vista para dispositivos moviles -->
+    <link rel="stylesheet" href="/styles/semaforo.css"> <!-- vincula la hoja de estilos -->
+    <title>Document</title> <!-- titulo de la pagina -->
+</head>
+
+<body onload="iniciarSemaforo()"> <!-- inicia la funcion al cargar la pagina -->
+    <h1>Simulador de semáforo</h1> <!-- titulo principal del simulador -->
+    <div id="rojo" class="circulo"></div> <!-- circulo rojo del semaforo -->
+    <div id="amarillo" class="circulo"></div> <!-- circulo amarillo del semaforo -->
+    <div id="verde" class="circulo"></div> <!-- circulo verde del semaforo -->
+
+    <script>
+        function cambiarColor(color) { // funcion para cambiar el color de los circulos
+            document.getElementById("rojo").style.backgroundColor = color === 'rojo' ? 'red' : 'grey'; // cambia a rojo o gris
+            document.getElementById("amarillo").style.backgroundColor = color === 'amarillo' ? 'yellow' : 'grey'; // cambia a amarillo o gris
+            document.getElementById("verde").style.backgroundColor = color === 'verde' ? 'green' : 'grey'; // cambia a verde o gris
+        }
+
+        function iniciarSemaforo() { // funcion para iniciar el ciclo del semaforo
+            setTimeout(() => cambiarColor('rojo'), 0);// cambio inmediato a rojo
+            setTimeout(() => cambiarColor('amarillo'), 1000);// cambia a amarillo despues de 1 segundo
+            setTimeout(() => cambiarColor('verde'), 2000);// cambia a verde despues de 2 segundos
+            setTimeout(iniciarSemaforo, 3000);// repite el ciclo cada 3 segundos
+        }
+
+    </script>
+</body>
+
+</html>

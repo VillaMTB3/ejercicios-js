@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // funcion que elige una URL al azar
+      function viajarConSuerte() {
+        var x = Math.random() * 10; // genera un numero aleatorio entre 0 y 10
+        var URL; // variable para guardar la URL
+        // chequea el rango del numero
+        if (x <= 3) {
+          x = 0; // asigna 0 si es menor o igual a 3
+          URL = "https://www.hotmail.com"; // URL de hotmail
+        } else if (x <= 6) {
+          x = 1; // asigna 1 si es menor o igual a 6
+          URL = "https://www.gmail.com"; // URL de gmail
+        } else {
+          x = 2; // asigna 2 si es mayor a 6
+          URL = "https://www.yahoo.com"; // URL de yahoo
+        }
+        location.assign(URL); // redirige a la URL seleccionada
+      }
+    </script>
+    <h1 id="titulo1">URL aleatoria</h1>
+    <div>
+      <a href="javascript:viajarConSuerte();" title="Viajando con suerte"
+        >Pulsa aqui para probar suerte</a
+      >
+    </div>
+  </body>
+</html>

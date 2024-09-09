@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8"> <!-- establece el tipo de codificacion -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ajusta la vista para dispositivos moviles -->
+    <title>Document</title> <!-- titulo de la pagina -->
+</head>
+<body>
+    <h1>A calcular</h1> <!-- titulo principal de la calculadora -->
+
+    <input type="number" id="num1" placeholder="Numero 1"> <!-- campo para el primer numero -->
+
+    <select id="operacion"> <!-- lista desplegable para seleccionar la operacion -->
+        <option value="+">+</option> <!-- opcion de suma -->
+        <option value="-">-</option> <!-- opcion de resta -->
+        <option value="*">*</option> <!-- opcion de multiplicacion -->
+        <option value="/">/</option> <!-- opcion de division -->
+    </select>
+
+    <input type="number" id="num2" placeholder="Numero 2"> <!-- campo para el segundo numero -->
+    <button onclick="calcular()">Calcular</button> <!-- boton para ejecutar la funcion de calcular -->
+    <p id="resultado"></p> <!-- espacio para mostrar el resultado -->
+
+    <script>
+        function calcular(){ // funcion para realizar el calculo
+            let num1 = parseFloat(document.getElementById("num1").value); // obtiene y convierte el primer numero
+            let num2 = parseFloat(document.getElementById("num2").value); // obtiene y convierte el segundo numero
+            let operacion = document.getElementById("operacion").value; // obtiene la operacion seleccionada
+            let resultado; // variable para almacenar el resultado
+
+            switch(operacion){ // verifica que operacion se selecciono
+                case "+": // si es suma
+                    resultado = num1 + num2; // suma los numeros
+                    break;
+                case "-": // si es resta
+                    resultado = num1 - num2; // resta los numeros
+                    break;
+                case "*": // si es multiplicacion
+                    resultado = num1 * num2; // multiplica los numeros
+                    break;
+                case "/": // si es division
+                    resultado = num1 / num2; // divide los numeros
+                    break;
+                default: // si no se selecciona una operacion valida
+                    resultado = "operacion no valida"; // muestra mensaje de error
+            }
+
+            document.getElementById("resultado").innerText = "Resultado: " + resultado; // muestra el resultado en pantalla
+        }
+    </script>
+
+</body>
+</html>
